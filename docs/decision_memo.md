@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **To** | VP, Data Center Delivery |
-| **From** | [Your Name], Program Manager |
+| **From** | Solomon Goldiamond, Program Manager |
 | **Date** | November 2, 2026 (data as of October 31, 2026) |
 | **Decision needed by** | November 11, 2026 |
 
