@@ -1,0 +1,3 @@
+source_line,reject_reason,co_number,project_id,date,cause,cost_category,description,amount,schedule_days,status
+107,project 'P77' does not exist in projects.csv,CO-P77-001,P77,01-Jun-2023,Owner Scope Change,Shell & Core,Added office fit-out scope,1285100.00,0,approved
+108,date is not a recognizable date: '13/45/2024',CO-P03-900,P03,13/45/2024,Code / AHJ Requirement,MEP Installation,Fuel storage containment upgrade,56600.00,3,Approved

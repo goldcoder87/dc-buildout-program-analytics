@@ -1,0 +1,108 @@
+co_number,project_id,date,cause,cost_category,description,amount,schedule_days,status
+CO-P01-001,P01,01-Jun-2023,Owner Scope Change,Shell & Core,Added office fit-out scope,1285100.00,0,approved
+CO-P01-002,P01,2023-06-11,Code / AHJ Requirement,MEP Installation,Fuel storage containment upgrade,56600.00,3,Approved
+CO-P03-010,P03,2024-12-26,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,"1,560,000.00",3,Approved
+CO-P01-003,P01,2023-07-19,Owner Scope Change,Shell & Core,Security perimeter upgrade,669500.00,3,Approved
+CO-P01-004,p01,2023-10-04,Owner Change,Shell & Core,Security perimeter upgrade,"354,200.00",5,Approved
+CO-P01-005,P01,11/03/2023,Design Change,MEP Installation,Revised busway routing in data hall,294700.00,0,Approved
+CO-P01-006,P01,2024-06-06,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,310700.00,5,APPROVED
+CO-P01-007,P01,2024-07-13,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,318400.00,3,APPROVED
+CO-P01-008,P01,2024-09-06,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,758300.00,0,Approved
+CO-P02-001,P02,2024-01-25,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,"$698,500",0,Approved
+CO-P02-002,P02,02/24/2024,Design Change,MEP Installation,Revised busway routing in data hall,"$565,400",3,Approved
+CO-P02-003,P02,2024-02-26,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,516700.00,0,Approved
+CO-P02-004,P02,2024-06-18,Owner Change,Shell & Core, Added office fit-out scope,"$421,600",5,Approved
+CO-P02-005,P02,07/07/2024,Design Change,MEP Installation,Added leak detection zones,"(375,200)",0,Approved
+CO-P02-006,P02,2024-11-29,Equip. Delay,General Conditions,Extended general conditions - late electrical gear,"2,546,200.00",18,Approved
+CO-P02-007,P02,12/19/2024,Equipment Delay,General Conditions, Out-of-sequence electrical installation and remobilization,2227900.00,16,Approved
+CO-P02-008,P02,12/22/2024,Owner Change,Shell & Core,Added office fit-out scope,535500.00,0,Approved
+CO-P02-009,P02,2025-01-06,equipment delay,General Conditions,Commissioning acceleration (second shift) to recover gear delay,1591400.00,11,Approved
+CO-P02-010,P02,01/11/2025,Design Change,MEP Installation,Mechanical yard piping redesign,"$1,441,900",0,Approved
+CO-P02-011,P02,2025-01-24,Design Change,MEP Installation,Added leak detection zones,"$545,700",0,Approved
+CO-P02-012,P02,2025-02-19,Code / AHJ Requirement,MEP Installation, Fire marshal egress revision,"$656,800",0,Approved
+CO-P02-013,P02,2025-04-05,Design Change,MEP Installation,Fire alarm sequence revision,"292,900.00",0,Approved
+CO-P02-014,P02,07/01/2025,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,"$544,900",3,Approved
+CO-P03-001,P03,2024-03-27,Code / AHJ Requirement,MEP Installation,Fire marshal egress revision,204700.00,2,Approved
+CO-P03-002,P03,2024-03-30,Design Change,MEP Installation,Added leak detection zones,"$265,200",0,Approved
+CO-P03-003,P03,04/26/2024,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,376800.00,5,Approved
+CO-P03-004,P03,2024-05-06,Design Change,MEP Installation,Mechanical yard piping redesign,369300.00,2,Approved
+CO-P03-005,P03,27-Jun-2024,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,259200.00,3,approved
+CO-P03-006,P03,2024-08-09,Design Change,MEP Installation,Mechanical yard piping redesign,427700.00,0,Approved
+CO-P03-007,P03,13-Oct-2024,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,"$614,900",5,Approved
+CO-P03-008,P03,10/27/2024,Code/AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,284300.00,0,Approved
+CO-P03-009,p03,2024-11-09,Code / AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,289900.00,2,Approved
+CO-P03-010,P03,2024-12-26,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,"1,560,000.00",3,Approved
+CO-P03-011,P03,2025-01-30,Owner Scope Change,Shell & Core,Loading dock expansion,"$3,632,600",5,Approved
+CO-P03-012,P03,2025-01-31,Design Change,MEP Installation,Revised busway routing in data hall,547800.00,0,Approved
+CO-P04-001,P04,2024-03-08,AHJ Requirement,MEP Installation,Fire marshal egress revision,203200.00,0,Approved
+CO-P04-002,P04,2024-05-29,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,"$391,100",5,APPROVED
+CO-P04-003,P04,2024-08-05,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,533400.00,0,Approved
+CO-P04-004,P04,2024-08-15,Owner Change,Shell & Core,Security perimeter upgrade  ,796000.00,0,Approved
+CO-P04-005,P04,2024-08-20,Design Change,MEP Installation,Added leak detection zones,"$632,700",2,Approved
+CO-P04-006,P04,2024-09-11,equipment delay,General Conditions,Extended general conditions - late electrical gear,"1,222,400.00",14,Rejected
+CO-P04-007,P04,2024-09-27,equipment delay,General Conditions,Out-of-sequence electrical installation and remobilization,"$1,069,600",13,Approved
+CO-P04-008,P04,2024-10-12,Equip. Delay,General Conditions,Commissioning acceleration (second shift) to recover gear delay,"$764,000",9,Rejected
+CO-P04-009,P04,2024-10-20,Code / AHJ Requirement,MEP Installation,Fire marshal egress revision,204600.00,3,Approved
+CO-P04-010,P04,2025-02-07,AHJ Requirement,MEP Installation,Fire marshal egress revision,254700.00,2,Approved
+CO-P04-011,P04,2025-02-10,Code / AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,"$142,500",0,Approved
+CO-P04-012,P04,2025-03-22,Design Change,MEP Installation,Revised busway routing in data hall,"$230,600",3,Approved
+CO-P05-001,P05,07/23/2024,Design Change,MEP Installation,Fire alarm sequence revision,"$958,400",0,Approved
+CO-P05-002,P05,2024-12-09,Design Change,MEP Installation,Fire alarm sequence revision,866700.00,3,Approved
+CO-P05-003,P05,2024-12-12,Design Change,MEP Installation,Fire alarm sequence revision,"$449,900",0,Approved
+CO-P05-004,P05,2025-01-08,AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,614200.00,3,Approved
+CO-P05-005,P05,2025-02-16,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,"(109,700)",0,Approved
+CO-P05-006,P05,2025-02-19,Design Change,MEP Installation,Revised busway routing in data hall,"$883,300",0,Approved
+CO-P06-001,P06,2025-07-20,Owner Change,Shell & Core,Added office fit-out scope,1624000.00,5,Approved
+CO-P05-007,P05,04/16/2025,Utility Delay,General Conditions,Temporary generator power for commissioning,2041900.00,27,approved
+CO-P05-008,P05,2025-04-29,Equipment Delay,General Conditions,Extended general conditions - late electrical gear,2827000.00,22,Approved
+CO-P05-009,P05,2025-05-24,Equipment Delay,General Conditions,Out-of-sequence electrical installation and remobilization,2473600.00,19,Approved
+CO-P05-010,P05,06/03/2025,Utility Delay,General Conditions,Extended general conditions - utility energization,1670600.00,28,Approved
+CO-P05-011,P05,06/14/2025,Equipment Delay,General Conditions,Commissioning acceleration (second shift) to recover gear delay  ,"$1,766,900",14,Approved
+CO-P05-001,P05,07/23/2024,Design Change,MEP Installation,Fire alarm sequence revision,"$958,400",0,Approved
+CO-P05-012,P05,06/24/2025,Owner Scope Change,Shell & Core,Tenant-requested cage build-out,"$721,500",0,Approved
+CO-P05-013,P05,2025-07-21,Owner Change,Shell & Core,Loading dock expansion,851300.00,2,approved
+CO-P05-014,P05,2025-08-24,Unforeseen Site Condition,Land & Sitework, Rock excavation at duct bank,520000.00,0,Approved
+CO-P05-015,P05,11/28/2025,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,630300.00,3,Approved
+CO-P05-016,P05,2025-12-26,Owner Scope Change,Shell & Core,Tenant-requested cage build-out,851600.00,0,Approved
+CO-P06-001,P06,2025-07-20,Owner Change,Shell & Core,Added office fit-out scope,1624000.00,5,Approved
+CO-P06-002,P06,12/14/2025,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,457500.00,2,APPROVED
+CO-P06-003,P06,2026-01-17,Code/AHJ Requirement,MEP Installation,Fuel storage containment upgrade,"322,900.00",0,Approved
+CO-P06-004,P06,2026-03-27,Equipment Delay,General Conditions,Extended general conditions - late electrical gear,3159300.00,35,Approved
+CO-P06-005,P06,2026-04-10,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,"(195,700)",3,Rejected
+CO-P06-006,P06,2026-04-28,Design Change,MEP Installation,Fire alarm sequence revision,-682400.00,3,Approved
+CO-P06-007,P06,2026-05-05,Equipment Delay,General Conditions,Out-of-sequence electrical installation and remobilization,2764400.00,30,Approved
+CO-P06-008,P06,2026-06-07,Design Change,MEP Installation,Mechanical yard piping redesign,797600.00,2,APPROVED
+CO-P06-009,P06,2026-06-09,Equip. Delay,General Conditions,Commissioning acceleration (second shift) to recover gear delay,1974600.00,22,Approved
+CO-P06-010,p06,2026-09-11,Unforeseen Site Condition,Land & Sitework,Undocumented utility relocation,-188500.00,2,pending
+CO-P06-011,P06,09/25/2026,Design Change,MEP Installation,Added leak detection zones,"204,100.00",5,Pending
+CO-P07-001,P07,2025-09-03,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,1335400.00,3,Approved
+CO-P07-002,P07,2025-10-15,Design Change,MEP Installation,Added leak detection zones,"$396,800",0,approved
+CO-P07-003,P07,11/26/2025,Design Change,MEP Installation,Mechanical yard piping redesign  ,479700.00,5,Rejected
+CO-P07-004,P07,10-Dec-2025,Design Change,MEP Installation,Mechanical yard piping redesign,"(91,600)",5,Approved
+CO-P07-005,P07,27-Dec-2025,Owner Change,Shell & Core,Security perimeter upgrade,"$116,200",2,Approved
+CO-P07-006,P07,2026-02-20,Code / AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,"237,800.00",3,Approved
+CO-P07-007,P07,2026-02-25,Owner Scope Change,Shell & Core,Tenant-requested cage build-out,426300.00,3,Approved
+CO-P07-007,P07,2026-02-25,Owner Scope Change,Shell & Core,Tenant-requested cage build-out,426300.00,3,Approved
+CO-P07-008,P07,2026-03-01,Owner Change,Shell & Core,Loading dock expansion,"$1,168,200",3,Approved
+CO-P07-009,P07,03/12/2026,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,444500.00,0,Approved
+CO-P07-010,P07,2026-04-09,Unforeseen Site Condition,Land & Sitework, Unsuitable soils at generator yard,1013700.00,0,Approved
+CO-P07-011,P07,2026-10-30,Code/AHJ Requirement,MEP Installation,Additional emergency responder radio coverage,"$423,700",3,Pending
+CO-P08-001,P08,10/19/2025,Owner Scope Change,Shell & Core,Added office fit-out scope,"$734,800",5,APPROVED
+CO-P08-002,P08,2025-10-20,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,466200.00,2,Approved
+CO-P08-003,P08,2025-11-11,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard  ,634800.00,2,Approved
+CO-P08-004,P08,2026-01-04,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,243600.00,2,approved
+CO-P08-005,P08,2026-01-09,Design Change,MEP Installation,Added leak detection zones,529800.00,3,APPROVED
+CO-P08-006,P08,2026-01-18,AHJ Requirement,MEP Installation,Fire marshal egress revision,217500.00,0,Approved
+CO-P08-007,P08,03/26/2026,Unforeseen Site Condition,Land & Sitework,Unsuitable soils at generator yard,-155100.00,5,Approved
+CO-P08-008,P08,2026-04-22,Owner Scope Change,Shell & Core,Security perimeter upgrade,"$814,100",5,Approved
+CO-P08-009,P08,26-Aug-2026,Design Change,MEP Installation,Fire alarm sequence revision,"$349,100",0,Pending
+CO-P08-010,P08,2026-09-21,Equipment Delay,General Conditions,Extended general conditions - late electrical gear,"$5,589,700",39,pending
+CO-P05-002,P05,2024-12-09,Design Change,MEP Installation,Fire alarm sequence revision,866700.00,3,Approved
+CO-P08-011,P08,2026-09-26,Design Change,MEP Installation,Mechanical yard piping redesign,"$574,500",5,Pending
+CO-P08-012,P08,10/17/2026,Design Change,MEP Installation,Fire alarm sequence revision,666100.00,0,Pending
+CO-P09-001,P09,06/01/2026,Owner Scope Change,Shell & Core,Added office fit-out scope,-260100.00,5,Approved
+CO-P09-002,P09,06/10/2026,Unforeseen Site Condition,Land & Sitework,Rock excavation at duct bank,451200.00,0,Approved
+CO-P09-003,P09,26-Jul-2026,AHJ Requirement,MEP Installation,Fuel storage containment upgrade,136500.00,0,Approved
+CO-P09-004,P09,2026-08-08,Design Change,MEP Installation,Added leak detection zones,242100.00,5,Approved
+CO-P77-001,P77,01-Jun-2023,Owner Scope Change,Shell & Core,Added office fit-out scope,1285100.00,0,approved
+CO-P03-900,P03,13/45/2024,Code / AHJ Requirement,MEP Installation,Fuel storage containment upgrade,56600.00,3,Approved

@@ -1,0 +1,101 @@
+project,milestone_code,milestone,seq,baseline_finish,forecast_finish,actual_finish,status
+P01,NTP,Notice to Proceed,1,2023-03-06,03/06/2023,06-Mar-2023,Complete
+P01,PERMIT,Building Permit Issued,2,2023-05-06,05/16/2023,2023-05-16,Complete
+P01,SHELL,Shell Dry-In,3,2023-11-05,2023-11-27,27-Nov-2023,Complete
+P01,UTILITY,Utility Power Energized,4,2024-02-04,2024-02-05,2024-02-05,Complete
+P01,GEARSET,Electrical Gear Set,5,02/19/2024,04-Mar-2024,03/04/2024,Complete
+P01,MEP,MEP Installation Complete,6,05-May-2024,2024-05-26,2024-05-26,COMPLETE
+P01,L5,Level 5 Commissioning Complete,7,2024-08-04,2024-08-24,2024-08-24,Complete
+P01,RFS,Ready for Service,8,2024-09-04,2024-09-26,2024-09-26,Complete
+P02,NTP,Notice to Proceed,1,2023-11-06,2023-11-12,2023-11-12,Complete
+P02,PERMIT,Building Permit Issued,2,2024-01-09,01/19/2024,19-Jan-2024,COMPLETE
+P02,SHELL,Shell Dry-In,3,07/20/2024,2024-07-30,2024-07-30,Complete
+P02,UTILITY,Utility Power Energized,4,10/24/2024,2024-11-06,2024-11-06,COMPLETE
+P02,GEARSET,Electrical Gear Set,5,11/09/2024,2024-12-29,2024-12-29,Complete
+P02,MEP,MEP Installation Complete,6,2025-01-29,2025-03-23,2025-03-23,Complete
+P02,L5,Level 5 Commissioning Complete,7,05/05/2025,2025-06-28,28-Jun-2025,Complete
+P02,RFS,Ready for Service,8,2025-06-06,2025-08-03,2025-08-03,Complete
+p03,NTP,Notice to Proceed,1,2023-06-05,2023-06-09,2023-06-09,Complete
+P03,PERMIT,Building Permit Issued,2,08-Aug-2023,08/29/2023,08/29/2023,Complete
+P03,SHELL,Shell Dry-In,3,2024-02-17,17-Mar-2024,2024-03-17,Complete
+P03,UTILITY,Utility Power Energized,4,2024-05-23,2024-06-04,2024-06-04,Complete
+P03,GEARSET,Electrical Gear Set,5,2024-06-08,2024-06-26,06/26/2024,Complete
+p03,MEP,MEP Installation Complete,6,2024-08-28,2024-09-19,09/19/2024,Complete
+P03,L5,Level 5 Commissioning Complete,7,2024-12-02,2024-12-30,12/30/2024,complete
+P03,RFS,Ready for Service,8,2025-01-03,2025-01-31,2025-01-31,Complete
+P04,NTP,Notice to Proceed,1,2023-09-11,2023-09-17,09/17/2023,Complete
+P04,PERMIT,Building Permit Issued,2,2023-11-11,2023-12-31,31-Dec-2023,Complete
+P04,SHELL,Shell Dry-In,3,2024-05-12,2024-07-06,2024-07-06,Complete
+P04,UTILITY,Utility Power Energized,4,2024-08-11,2024-08-16,2024-08-16,Complete
+P04,GEARSET,Electrical Gear Set,5,08/26/2024,2024-10-09,2024-10-09,Complete
+P04,MEP,MEP Installation Complete,6,2024-11-10,2024-12-17,2024-12-17,Complete
+P04,L5,Level 5 Commissioning Complete,7,2025-02-09,2025-03-17,2025-03-17,Complete
+P04,RFS,Ready for Service,8,2025-03-12,2025-04-21,2025-04-21,Complete
+p05,NTP,Notice to Proceed,1,2024-04-01,04/01/2024,2024-04-01,Complete
+P05,PERMIT,Building Permit Issued,2,2024-06-04,2024-06-09,2024-06-09,COMPLETE
+P05,SHELL,Shell Dry-In,3,2024-12-14,29-Dec-2024,2024-12-29,Complete
+P05,UTILITY,Utility Power Energized,4,20-Mar-2025,2025-05-16,2025-05-16,Complete
+P05,GEARSET,Electrical Gear Set,5,2025-04-05,06/07/2025,2025-06-07,Complete
+P05,MEP,MEP Installation Complete,6,2025-06-25,2025-08-22,08/22/2025,Complete
+P05,L5,Level 5 Commissioning Complete,7,09/29/2025,2025-11-23,23-Nov-2025,Complete
+P05,RFS,Ready for Service,8,2025-10-31,2025-12-30,2025-12-30,Complete
+P06,NTP,Notice to Proceed,1,2025-03-03,2025-03-07,2025-03-07,Complete
+P06,PERMIT,Building Permit Issued,2,2025-05-03,17-May-2025,2025-05-17,Complete
+P06,SHELL,Shell Dry-In,3,2025-11-02,2025-11-22,22-Nov-2025,Complete
+P06,UTILITY,Utility Power Energized,4,02/01/2026,08-Feb-2026,08-Feb-2026,complete
+P06,GEARSET,Electrical Gear Set,5,02/16/2026,2026-05-24,2026-05-24,Complete
+P06,MEP,MEP Installation Complete,6,2026-05-03,08/02/2026,08/02/2026,Complete
+P06,L5,Level 5 Commissioning Complete,7,2026-08-02,2026-10-30,30-Oct-2026,complete
+P06,RFS,Ready for Service,8,2026-09-02,2026-12-03,,In Progress
+P07,NTP,Notice to Proceed,1,06/02/2025,2025-06-03,03-Jun-2025,COMPLETE
+P07,PERMIT,Building Permit Issued,2,08/02/2025,2025-08-06,2025-08-06,Complete
+P07,SHELL,Shell Dry-In,3,2026-02-01,14-Feb-2026,2026-02-14,Complete
+P07,UTILITY,Utility Power Energized,4,2026-05-03,05/04/2026,2026-05-04,Complete
+P07,GEARSET,Electrical Gear Set,5,05/18/2026,2026-06-04,06/04/2026,Complete
+P07,MEP,MEP Installation Complete,6,02-Aug-2026,2026-08-23,2026-08-23,Complete
+P09,MEP,MEP Installation Complete,6,2027-01-03,2027-04-22,N/A,Not Started
+P07,L5,Level 5 Commissioning Complete,7,2026-11-01,2026-11-23,,In Progress
+P07,RFS,Ready for Service,8,02-Dec-2026,12/25/2026,,Not Started
+P08,NTP,Notice to Proceed,1,2025-08-04,08/05/2025,2025-08-05,Complete
+P08,PERMIT,Building Permit Issued,2,10/07/2025,2025-10-08,2025-10-08,Complete
+P08,SHELL,Shell Dry-In,3,04/18/2026,04/27/2026,2026-04-27,Complete
+P08,UTILITY,Utility Power Energized,4,23-Jul-2026,2026-07-28,07/28/2026,Complete
+P08,GEARSET,Electrical Gear Set,5,2026-08-08,16-Nov-2026,,In Progress
+P08,MEP,MEP Installation Complete,6,2026-10-28,02/02/2027,N/A,not started
+P08,L5,Level 5 Commissioning Complete,7,02/01/2027,2027-05-05,,Not Started
+P08,RFS,Ready for Service,8,2027-03-05,2027-06-06,N/A,Not Started
+P09,NTP,Notice to Proceed,1,2025-11-03,11/06/2025,11/06/2025,Complete
+P09,PERMIT,Building Permit Issued,2,01/03/2026,2026-01-08,2026-01-08,Complete
+P09,SHELL,Shell Dry-In,3,07/05/2026,07/16/2026,07/16/2026,Complete
+P09,UTILITY,Utility Power Energized,4,10/04/2026,2026-10-07,2026-10-07,complete
+P03,RFS,Ready for Service,8,2025-01-03,2025-01-31,2025-01-31,Complete
+P09,GEARSET,Electrical Gear Set,5,2026-10-19,02/11/2027,N/A,In Progress
+P09,MEP,MEP Installation Complete,6,2027-01-03,2027-04-22,N/A,Not Started
+P09,L5,Level 5 Commissioning Complete,7,2027-04-04,2027-07-13,N/A,Not Started
+P09,RFS,Ready for Service,8,2027-05-05,2027-08-18,,Not Started
+P10,NTP,Notice to Proceed,1,2027-02-01,02/01/2027,,In Progress
+P10,PERMIT,Building Permit Issued,2,10-Apr-2027,2027-04-10,,Not Started
+P10,SHELL,Shell Dry-In,3,2027-10-30,30-Oct-2027,N/A,Not Started
+P10,UTILITY,Utility Power Energized,4,08-Feb-2028,2028-02-08,N/A,Not Started
+P10,GEARSET,Electrical Gear Set,5,2028-02-25,2028-02-25,N/A,Not Started
+P10,MEP,MEP Installation Complete,6,05/19/2028,2028-05-19,,Not Started
+P10,L5,Level 5 Commissioning Complete,7,08/29/2028,08/29/2028,N/A,Not Started
+p10,RFS,Ready for Service,8,2028-10-02,2028-10-02,,Not Started
+P11,NTP,Notice to Proceed,1,04/05/2027,04/05/2027,,In Progress
+P11,PERMIT,Building Permit Issued,2,2027-06-08,2027-06-08,,NOT STARTED
+P11,SHELL,Shell Dry-In,3,2027-12-18,2027-12-18,N/A,Not Started
+P11,GEARSET,Electrical Gear Set,5,2028-04-08,2028-04-08,,Not Started
+P11,UTILITY,Utility Power Energized,4,2028-03-23,2028-03-23,N/A,Not Started
+P11,GEARSET,Electrical Gear Set,5,2028-04-08,2028-04-08,,Not Started
+P11,MEP,MEP Installation Complete,6,2028-06-28,2028-06-28,,Not Started
+P11,L5,Level 5 Commissioning Complete,7,02-Oct-2028,2028-10-02,N/A,Not Started
+P11,RFS,Ready for Service,8,2028-11-03,2028-11-03,,Not Started
+P12,NTP,Notice to Proceed,1,2027-06-07,07-Jun-2027,,In Progress
+P12,PERMIT,Building Permit Issued,2,2027-08-10,08/10/2027,,Not Started
+p12,SHELL,Shell Dry-In,3,02/19/2028,2028-02-19,N/A,Not Started
+P12,UTILITY,Utility Power Energized,4,05/25/2028,05/25/2028,,Not Started
+P07,SHELL,Shell Dry-In,3,2026-02-01,14-Feb-2026,2026-02-14,Complete
+P12,GEARSET,Electrical Gear Set,5,2028-06-10,2028-06-10,,NOT STARTED
+P12,MEP,MEP Installation Complete,6,2028-08-30,2028-08-30,,Not Started
+P12,L5,Level 5 Commissioning Complete,7,2028-12-04,04-Dec-2028,,Not Started
+P12,RFS,Ready for Service,8,2029-01-05,2029-01-05,,Not Started

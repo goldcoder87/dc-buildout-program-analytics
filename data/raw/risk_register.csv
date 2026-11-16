@@ -1,0 +1,42 @@
+risk_id,project_id,category,title,probability,cost_impact,schedule_impact_days,status,owner,date_raised
+R-P06-01,P06,Supply Chain,MV switchgear delivered late by single-source incumbent,0.74,5340000.00,73,Mitigating,Procurement Lead,2026-06-03
+R-P06-02,P06,Weather,Winter weather impact on sitework and roofing,0.3,250000.00,15,Mitigating,Construction Manager,2025-11-20
+R-P06-03,P06,Design,High-density tenant requires liquid-cooling scope change,0.18,3440000.00,15,open,Design Manager,07/27/2025
+R-P06-04,P06,Utility,Utility substation energization later than committed,0.36,700000.00,28,Closed,Energy Manager,2025-04-08
+R-P06-05,P06,Permitting,AHJ inspection backlog delays energization sign-off,0.23,"$600,000",17,MITIGATING,Construction Manager,2025-07-09
+R-P07-01,P07,Supply Chain,Transformer lead-time extension,0.28,"$750,000",14,Open,Procurement Lead,2025-05-20
+R-P07-02,P07,Weather,Winter weather impact on sitework and roofing,22%,"$370,000",9,OPEN,Construction Manager,2026-02-08
+R-P07-03,P07,Labor,Electrical trade labor shortage in metro,44%,"$1,800,000",11,Open,Construction Manager,2026-05-14
+R-P12-04,P12,Labor,Electrical trade labor shortage in metro,0.38,"$1,500,000",16,Mitigating,Construction Manager,2026-09-09
+R-P07-04,P07,Commissioning,Commissioning agent availability for L4/L5 scripts,0.38,850000.00,17,Mitigating,Commissioning Lead,06/02/2026
+R-P08-01,P08,Supply Chain,MV switchgear delivered late by single-source incumbent,0.67,6330000.00,80,open,Procurement Lead,2026-08-31
+R-P08-02,P08,Commissioning,Commissioning agent availability for L4/L5 scripts,0.31,"$790,000",12,Mitigating,Commissioning Lead,2025-11-18
+R-P08-03,P08,Labor,Electrical trade labor shortage in metro,0.32,"1,760,000.00",20,Mitigating,Construction Manager,2026-01-21
+R-P08-04,P08,Permitting,AHJ inspection backlog delays energization sign-off,23%,590000.00,22,Mitigating,Construction Manager,2026-05-18
+R-P08-05,P08,Supply Chain,Transformer lead-time extension,35%,1400000.00,22,OPEN,Procurement Lead,09/04/2025
+R-P08-06,P08,Design,High-density tenant requires liquid-cooling scope change,23%,"3,370,000.00",17,Open,Design Manager,2026-09-30
+R-P09-01,P09,Supply Chain,MV switchgear delivered late by single-source incumbent,64%,3880000.00,62,OPEN,Procurement Lead,2025-07-13
+R-P09-02,P09,Permitting,AHJ inspection backlog delays energization sign-off,0.15,550000.00,9,Open,Construction Manager,02/09/2026
+R-P09-03,P09,Labor,Electrical trade labor shortage in metro,0.43,980000.00,28,open,Construction Manager,08-Aug-2025
+R-P09-04,P09,Commissioning,Commissioning agent availability for L4/L5 scripts,0.37,"$280,000",17,Open,Commissioning Lead,2025-07-21
+R-P09-05,P09,Design,High-density tenant requires liquid-cooling scope change,0.31,4260000.00,39,Mitigating,Design Manager,07/20/2026
+R-P09-06,P09,Utility,Utility substation energization later than committed,0.28,820000.00,33,Closed,Energy Manager,2026-03-22
+R-P10-01,P10,Supply Chain,MV switchgear delivered late by single-source incumbent,0.63,"10,660,000.00",79,Open,Procurement Lead,2026-09-21
+R-P10-02,P10,Commissioning,Commissioning agent availability for L4/L5 scripts,23%,1190000.00,13,Open,Commissioning Lead,2026-09-08
+R-P10-03,P10,Weather,Winter weather impact on sitework and roofing,0.26,"890,000.00",9,Mitigating,Construction Manager,2026-08-08
+R-P10-04,P10,Design,High-density tenant requires liquid-cooling scope change,0.2,"$8,840,000",19,Open,Design Manager,2026-07-11
+R-P10-05,P10,Labor,Electrical trade labor shortage in metro,0.33,"2,130,000.00",12,Open,Construction Manager,2026-08-21
+R-P10-06,P10,Supply Chain,Transformer lead-time extension,0.36,1930000.00,30,Open,Procurement Lead,2026-08-25
+R-P11-01,P11,Supply Chain,MV switchgear delivered late by single-source incumbent,62%,5560000.00,81,Open,Procurement Lead,26-Jul-2026
+R-P11-02,P11,Commissioning,Commissioning agent availability for L4/L5 scripts,0.31,"$420,000",18,MITIGATING,Commissioning Lead,2026-07-11
+R-P11-03,P11,Design,High-density tenant requires liquid-cooling scope change,0.19,"5,210,000.00",40,OPEN,Design Manager,2026-10-06
+R-P11-04,P11,Labor,Electrical trade labor shortage in metro,0.34,"$1,770,000",19,Open,Construction Manager,2026-08-25
+R-P11-05,P11,Permitting,AHJ inspection backlog delays energization sign-off,0.26,380000.00,15,OPEN,Construction Manager,09/17/2026
+R-P11-06,P11,Weather,Winter weather impact on sitework and roofing,24%,"$470,000",7,Open,Construction Manager,08/21/2026
+R-P12-01,P12,Supply Chain,MV switchgear delivered late by single-source incumbent,67%,6820000.00,85,mitigating,Procurement Lead,2026-10-01
+R-P12-02,P12,Design,High-density tenant requires liquid-cooling scope change,0.32,"$7,070,000",16,Open,Design Manager,2026-08-28
+R-P08-05,P08,Supply Chain,Transformer lead-time extension,35%,1400000.00,22,OPEN,Procurement Lead,09/04/2025
+R-P12-03,P12,Commissioning,Commissioning agent availability for L4/L5 scripts,32%,750000.00,16,Open,Commissioning Lead,2026-08-30
+R-P12-04,P12,Labor,Electrical trade labor shortage in metro,0.38,"$1,500,000",16,Mitigating,Construction Manager,2026-09-09
+R-P12-05,P12,Supply Chain,Transformer lead-time extension,39%,1450000.00,28,Mitigating,Procurement Lead,2026-10-07
+R-P12-06,P12,Weather,Winter weather impact on sitework and roofing,20%,690000.00,10,Open,Construction Manager,2026-08-13

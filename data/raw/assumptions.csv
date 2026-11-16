@@ -1,0 +1,6 @@
+key,value,unit,description
+as_of_date,2026-10-31,date,Data cut-off for every extract in this folder
+lease_rate_usd_per_kw_month,165,USD/kW-month,Planning lease rate used to value a month of delayed capacity
+billing_ramp_factor,0.5,ratio,Share of a phase's capacity assumed to be billing during the delay window
+schedule_float_weeks,4,weeks,Float planned between vendor promise date and required-on-site date
+dual_source_onboarding_usd_per_project,350000,USD,"One-time engineering, factory witness test and drawing re-coordination cost when a project switches switchgear vendor"

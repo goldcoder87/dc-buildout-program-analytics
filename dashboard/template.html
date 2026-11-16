@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Center Build-Out Program Dashboard</title>
+<meta name="description" content="Portfolio dashboard for a 378 MW data center build-out program: schedule, cost, vendor delivery and a switchgear sourcing decision. Synthetic data.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,.10);
+  --s1: #2a78d6; --s2: #eb6834; --neutral: #a9a79f;
+  --g1: #52514e; --g2: #898781; --g3: #c3c2b7;
+  --good: #0ca30c; --warning: #fab219; --critical: #d03b3b;
+  --good-bg: rgba(12,163,12,.10); --warning-bg: rgba(250,178,25,.20); --critical-bg: rgba(208,59,59,.13);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10);
+    --s1: #3987e5; --s2: #d95926; --neutral: #6b6a65;
+    --g1: #c3c2b7; --g2: #898781; --g3: #52514e;
+    --good-bg: rgba(12,163,12,.18); --warning-bg: rgba(250,178,25,.18); --critical-bg: rgba(208,59,59,.22);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 28px 16px 48px; }
+header h1 { font-size: 24px; line-height: 1.2; margin: 0 0 4px; letter-spacing: -.01em; }
+header p { margin: 0; color: var(--ink-2); max-width: 78ch; }
+.tag { display: inline-block; font-size: 12px; color: var(--ink-2); border: 1px solid var(--border);
+  border-radius: 999px; padding: 1px 9px; margin-right: 6px; background: var(--surface); }
+.filters { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin: 20px 0 16px; }
+.filters label { font-size: 12px; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
+select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
+  border-radius: 6px; padding: 5px 8px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--ink-2); margin-left: auto; }
+.legend span::before, .key::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  margin-right: 6px; background: var(--c); vertical-align: -1px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.kpi, .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.kpi { padding: 14px 16px; }
+.kpi .label { font-size: 12px; color: var(--ink-2); }
+.kpi .value { font-size: 28px; font-weight: 600; line-height: 1.2; margin: 2px 0; letter-spacing: -.01em; }
+.kpi .sub { font-size: 12px; color: var(--ink-2); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.card { padding: 16px; min-width: 0; }
+.card.wide { grid-column: 1 / -1; }
+.card h2 { font-size: 15px; margin: 0; }
+.card .note { font-size: 12px; color: var(--ink-2); margin: 2px 0 10px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font: 11.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink-2); }
+svg text.strong { fill: var(--ink); font-weight: 600; }
+svg text.muted { fill: var(--muted); }
+svg .hit { cursor: default; }
+svg [data-tip]:hover { opacity: .82; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 11.5px; padding: 6px 8px;
+  border-bottom: 1px solid var(--axis); white-space: nowrap; }
+td { padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+td.num, th.num { text-align: right; }
+.ms td.cell { text-align: center; white-space: nowrap; min-width: 74px; }
+.ms .good { background: var(--good-bg); } .ms .warning { background: var(--warning-bg); }
+.ms .critical { background: var(--critical-bg); } .ms .todo { color: var(--muted); }
+.msleg { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--ink-2); margin-top: 10px; }
+.msleg i { font-style: normal; padding: 0 6px; border-radius: 3px; margin-right: 4px; }
+.decision { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.headline { font-size: 22px; font-weight: 600; line-height: 1.25; margin: 4px 0 6px; letter-spacing: -.01em; }
+.seg { display: inline-flex; border: 1px solid var(--axis); border-radius: 7px; overflow: hidden; }
+.seg button { font: inherit; font-size: 12px; padding: 4px 10px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.facts { margin: 10px 0 0; padding: 0; list-style: none; font-size: 13px; color: var(--ink-2); }
+.facts li { padding: 5px 0; border-top: 1px solid var(--grid); }
+.facts b { color: var(--ink); }
+#tip { position: fixed; z-index: 10; pointer-events: none; background: var(--ink); color: var(--surface);
+  font-size: 12px; line-height: 1.4; padding: 7px 9px; border-radius: 6px; max-width: 280px; display: none;
+  white-space: pre-line; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+footer { margin-top: 20px; font-size: 12px; color: var(--muted); }
+@media (max-width: 860px) {
+  .grid, .decision { grid-template-columns: minmax(0, 1fr); }
+  .legend { margin-left: 0; }
+  header h1 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Data Center Build-Out Program</h1>
+    <p><span class="tag">Synthetic data</span><span class="tag" id="asof"></span>
+      Twelve build phases across six campuses. Schedule, cost, equipment delivery and the sourcing decision the data points to.</p>
+  </header>
+
+  <div class="filters">
+    <label>Region <select id="f-region"></select></label>
+    <label>Stage <select id="f-stage"></select></label>
+    <div class="legend" aria-label="Color key: MV switchgear vendor on the project">
+      <span style="--c:var(--s1)">Kestrel switchgear (incumbent)</span>
+      <span style="--c:var(--s2)">Halvorsen switchgear (alternate)</span>
+      <span style="--c:var(--neutral)">Other / not awarded</span>
+    </div>
+  </div>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Ready-for-Service slip by project</h2>
+      <p class="note">Days behind the baseline RFS date. Bar color is the project's MV switchgear vendor.</p>
+      <div class="chart" id="c-slip"></div>
+    </div>
+    <div class="card">
+      <h2>Capacity delivery: plan vs actual and forecast</h2>
+      <p class="note">Cumulative IT capacity (MW) by Ready-for-Service date.</p>
+      <div class="chart" id="c-capacity"></div>
+    </div>
+    <div class="card">
+      <h2>MV switchgear delivery slip, by order date</h2>
+      <p class="note">One dot per lineup. Weeks delivered after the vendor's original promise; hollow dots are still open.</p>
+      <div class="chart" id="c-scatter"></div>
+    </div>
+    <div class="card">
+      <h2>Vendor delivery scorecard</h2>
+      <p class="note">Average weeks late against original promise, with the share of lines within 7 days of it.</p>
+      <div class="chart" id="c-vendors"></div>
+    </div>
+    <div class="card">
+      <h2>Change orders by cause</h2>
+      <p class="note">Approved and pending, $M. Segments split by the project's switchgear vendor.</p>
+      <div class="chart" id="c-co"></div>
+    </div>
+    <div class="card">
+      <h2>Forecast at completion vs original budget</h2>
+      <p class="note">Variance by project. Right of zero is over budget.</p>
+      <div class="chart" id="c-cost"></div>
+    </div>
+
+    <div class="card wide">
+      <h2>Milestone tracker</h2>
+      <p class="note">Each cell shows status and days against baseline.</p>
+      <div class="scroll" id="t-milestones"></div>
+      <div class="msleg">
+        <span><i class="good" style="background:var(--good-bg)">✓</i>done</span>
+        <span><i>◐</i>in progress</span><span><i>○</i>not started</span>
+        <span><i style="background:var(--good-bg)">0–7 d</i>on plan</span>
+        <span><i style="background:var(--warning-bg)">8–45 d</i>late</span>
+        <span><i style="background:var(--critical-bg)">46+ d</i>seriously late</span>
+      </div>
+    </div>
+
+    <div class="card wide">
+      <h2>Decision: who supplies switchgear on the next three projects?</h2>
+      <p class="note">Covers the unawarded projects only; the filters above do not apply. Full reasoning is in the decision memo.</p>
+      <div class="decision">
+        <div>
+          <div class="seg" role="group" aria-label="Track record used">
+            <button data-basis="All history" aria-pressed="true">Full track record</button>
+            <button data-basis="Last 36 months" aria-pressed="false">Last 36 months</button>
+          </div>
+          <div class="headline" id="d-headline"></div>
+          <div class="chart" id="c-decision"></div>
+          <div class="legend" style="margin:8px 0 0">
+            <span style="--c:var(--g1)">Switching cost (price premium + onboarding)</span>
+            <span style="--c:var(--g2)">Deferred revenue from RFS slip</span>
+            <span style="--c:var(--g3)">Delay change orders</span>
+          </div>
+        </div>
+        <ul class="facts" id="d-facts"></ul>
+      </div>
+    </div>
+
+    <div class="card wide">
+      <h2>Top open risks</h2>
+      <p class="note">Ranked by probability-weighted cost exposure.</p>
+      <div class="scroll" id="t-risks"></div>
+    </div>
+  </section>
+
+  <footer>All companies, vendors, projects and figures are fictional and generated for demonstration. Pipeline: raw CSV extracts → Python import with validation → SQLite → SQL views → this page.</footer>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const D = /*__DATA__*/null;
+
+// ---------- helpers ----------
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ts = s => Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10));
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmtDate = s => `${MONTHS[+s.slice(5, 7) - 1]} ${+s.slice(8, 10)}, ${s.slice(0, 4)}`;
+const usd = v => { const a = Math.abs(v), sign = v < 0 ? '−' : '';
+  return sign + '$' + (a >= 1e9 ? (a / 1e9).toFixed(2) + 'B' : a >= 1e6 ? (a / 1e6).toFixed(1) + 'M' : Math.round(a / 1e3) + 'K'); };
+const sum = (arr, f) => arr.reduce((t, x) => t + f(x), 0);
+const vendorKey = v => !v ? 'none' : v.startsWith('Kestrel') ? 'kestrel' : v.startsWith('Halvorsen') ? 'halvorsen' : 'other';
+const COLOR = { kestrel: 'var(--s1)', halvorsen: 'var(--s2)', none: 'var(--neutral)', other: 'var(--neutral)' };
+const short = p => `${p.project_id} ${p.project_name.replace('Phase ', 'Ph ')}`;
+const byId = Object.fromEntries(D.projects.map(p => [p.project_id, p]));
+const STAGES = ['Complete', 'Commissioning', 'Construction', 'Pre-Construction'];
+const state = { region: 'All', stage: 'All', basis: 'All history' };
+
+// rounded right (or left) end, square at the baseline
+function barPath(x, y, w, h, r, left) {
+  r = Math.min(r, Math.abs(w), h / 2);
+  if (w <= 0) return '';
+  return left
+    ? `M${x + w},${y}H${x + r}a${r},${r} 0 0 0 ${-r},${r}V${y + h - r}a${r},${r} 0 0 0 ${r},${r}H${x + w}Z`
+    : `M${x},${y}H${x + w - r}a${r},${r} 0 0 1 ${r},${r}V${y + h - r}a${r},${r} 0 0 1 ${-r},${r}H${x}Z`;
+}
+const svg = (w, h, body, label) =>
+  `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(label)}">${body}</svg>`;
+const width = id => Math.max(300, Math.floor($(id).clientWidth));
+const niceMax = v => { const p = Math.pow(10, Math.floor(Math.log10(v || 1))); const n = v / p;
+  return (n <= 1 ? 1 : n <= 1.2 ? 1.2 : n <= 1.6 ? 1.6 : n <= 2 ? 2 : n <= 3 ? 3 : n <= 4 ? 4 : n <= 6 ? 6 : n <= 8 ? 8 : 10) * p; };
+const empty = id => { $(id).innerHTML = '<p class="note">No projects match the current filters.</p>'; };
+
+// ---------- filtering ----------
+function selected() {
+  return D.projects.filter(p => (state.region === 'All' || p.region === state.region)
+    && (state.stage === 'All' || p.status === state.stage));
+}
+
+// ---------- KPI tiles ----------
+function renderKpis(ps, ids) {
+  const mw = st => sum(ps.filter(p => st.includes(p.status)), p => p.mw);
+  const started = ps.filter(p => p.status !== 'Pre-Construction');
+  const worst = started.slice().sort((a, b) => b.rfs_slip_days - a.rfs_slip_days)[0];
+  const budget = sum(ps, p => p.budget), eac = sum(ps, p => p.eac);
+  const ll = D.po_lines.filter(l => ids.has(l.project_id) && l.is_long_lead);
+  const onTime = ll.filter(l => l.slip_days <= 7).length;
+  const risks = D.risks.filter(r => ids.has(r.project_id));
+  const tiles = [
+    ['Program capacity', `${sum(ps, p => p.mw)} MW`,
+      `${mw(['Complete'])} delivered · ${mw(['Commissioning', 'Construction'])} in build · ${mw(['Pre-Construction'])} planned`],
+    ['Average RFS slip, started projects', started.length ? `${Math.round(sum(started, p => p.rfs_slip_days) / started.length)} days` : '–',
+      worst ? `Worst: ${worst.project_id} at ${worst.rfs_slip_days} days` : 'No started projects'],
+    ['Forecast at completion', usd(eac),
+      `${eac >= budget ? '+' : '−'}${Math.abs((eac - budget) / budget * 100).toFixed(1)}% vs ${usd(budget)} budget`],
+    ['Long-lead equipment on time', ll.length ? `${Math.round(onTime / ll.length * 100)}%` : '–',
+      `${onTime} of ${ll.length} order lines within 7 days of promise`],
+    ['Open risk exposure', usd(sum(risks, r => r.probability * r.cost)),
+      `${risks.length} open risks, probability-weighted`],
+  ];
+  $('kpis').innerHTML = tiles.map(([l, v, s]) =>
+    `<div class="kpi"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${s}</div></div>`).join('');
+}
+
+// ---------- generic horizontal bars ----------
+// rows: [{label, sub, segs:[{v,color,tip}], end}]  (single bar = one segment)
+function hbars(id, rows, opts) {
+  if (!rows.length) return empty(id);
+  const W = width(id), labelW = Math.min(opts.labelW || 150, W * 0.42), endW = opts.endW || 70;
+  const rowH = 26, bh = 14, top = 6, plotW = W - labelW - endW;
+  const max = niceMax(Math.max(...rows.map(r => sum(r.segs, s => s.v)), opts.minMax || 0));
+  const H = top + rows.length * rowH + 20;
+  let g = '';
+  const ticks = 4;
+  for (let i = 0; i <= ticks; i++) {
+    const x = labelW + plotW * i / ticks;
+    g += `<line x1="${x}" x2="${x}" y1="${top}" y2="${H - 20}" stroke="var(--${i ? 'grid' : 'axis'})"/>`
+      + `<text class="muted" x="${x}" y="${H - 5}" text-anchor="middle">${opts.tick(max * i / ticks)}</text>`;
+  }
+  rows.forEach((r, i) => {
+    const y = top + i * rowH + (rowH - bh) / 2;
+    g += `<text class="strong" x="0" y="${y + 11}">${esc(r.label)}</text>`;
+    let x = labelW;
+    const live = r.segs.filter(s => s.v > 0);
+    live.forEach((s, k) => {
+      const w = Math.max(1.5, s.v / max * plotW - (k < live.length - 1 ? 2 : 0));
+      const last = k === live.length - 1;
+      g += last ? `<path d="${barPath(x, y, w, bh, 4)}" fill="${s.color}" data-tip="${esc(s.tip)}"/>`
+        : `<rect x="${x}" y="${y}" width="${w}" height="${bh}" fill="${s.color}" data-tip="${esc(s.tip)}"/>`;
+      x += s.v / max * plotW;
+    });
+    g += `<text x="${x + 6}" y="${y + 11}">${esc(r.end)}</text>`;
+  });
+  $(id).innerHTML = svg(W, H, g, opts.aria);
+}
+
+function renderSlip(ps) {
+  hbars('c-slip', ps.map(p => ({
+    label: short(p),
+    segs: [{ v: Math.max(0, p.rfs_slip_days), color: COLOR[vendorKey(p.switchgear_vendor)],
+      tip: `${p.project_name} (${p.mw} MW, ${p.status})\nBaseline RFS ${fmtDate(p.rfs_baseline_date)}\nCurrent RFS ${fmtDate(p.rfs_current_date)}\nSwitchgear: ${p.switchgear_vendor || 'not awarded'}` }],
+    end: p.status === 'Pre-Construction' ? 'not started' : `${p.rfs_slip_days} d`,
+  })), { labelW: 170, endW: 74, tick: v => Math.round(v), aria: 'Ready-for-Service slip in days by project' });
+}
+
+function renderVendors(ids) {
+  const groups = {};
+  D.po_lines.filter(l => ids.has(l.project_id)).forEach(l => {
+    const k = `${l.vendor_name}|${l.category}`;
+    (groups[k] = groups[k] || []).push(l);
+  });
+  const rows = Object.entries(groups).map(([k, ls]) => {
+    const [vendor, cat] = k.split('|');
+    const avg = sum(ls, l => l.slip_days) / ls.length / 7, on = ls.filter(l => l.slip_days <= 7).length / ls.length * 100;
+    return { vendor, cat, avg, on, n: ls.length };
+  }).sort((a, b) => b.avg - a.avg);
+  hbars('c-vendors', rows.map(r => ({
+    label: `${r.vendor.split(' ')[0]} · ${r.cat}`,
+    segs: [{ v: Math.max(0, r.avg), color: COLOR[vendorKey(r.vendor) === 'none' ? 'other' : vendorKey(r.vendor)],
+      tip: `${r.vendor}\n${r.cat}: ${r.n} order lines\nAverage ${r.avg.toFixed(1)} weeks vs promise\n${Math.round(r.on)}% within 7 days of promise` }],
+    end: `${r.avg.toFixed(1)} wk · ${Math.round(r.on)}%`,
+  })), { labelW: 176, endW: 96, minMax: 4, tick: v => v % 1 ? v.toFixed(1) : v, aria: 'Average delivery slip in weeks by vendor and equipment category' });
+}
+
+function renderChangeOrders(ids) {
+  const causes = {};
+  D.change_orders.filter(c => ids.has(c.project_id)).forEach(c => {
+    const k = vendorKey(byId[c.project_id].switchgear_vendor);
+    causes[c.cause] = causes[c.cause] || { kestrel: 0, halvorsen: 0, n: 0 };
+    causes[c.cause][k] += c.amount; causes[c.cause].n += c.n;
+  });
+  const rows = Object.entries(causes).map(([cause, v]) => ({ cause, ...v, total: v.kestrel + v.halvorsen }))
+    .sort((a, b) => b.total - a.total);
+  hbars('c-co', rows.map(r => ({
+    label: r.cause,
+    segs: ['kestrel', 'halvorsen'].map(k => ({ v: Math.max(0, r[k]) / 1e6, color: COLOR[k],
+      tip: `${r.cause}\n${k === 'kestrel' ? 'Kestrel' : 'Halvorsen'}-switchgear projects: ${usd(r[k])}\nAll projects: ${usd(r.total)} across ${r.n} change orders` })),
+    end: usd(r.total),
+  })), { labelW: 160, endW: 60, tick: v => '$' + (v % 1 ? v.toFixed(1) : v) + 'M', aria: 'Change order cost by cause' });
+}
+
+// ---------- capacity curve ----------
+function renderCapacity(ps) {
+  const id = 'c-capacity';
+  if (!ps.length) return empty(id);
+  const W = width(id), H = 300, m = { l: 40, r: 14, t: 12, b: 26 };
+  const series = key => { let c = 0; return ps.slice().sort((a, b) => ts(a[key]) - ts(b[key]))
+    .map(p => ({ t: ts(p[key]), mw: (c += p.mw), p })); };
+  const base = series('rfs_baseline_date'), cur = series('rfs_current_date');
+  const t0 = Math.min(base[0].t, ts(D.as_of)) - 60 * 864e5, t1 = Math.max(cur[cur.length - 1].t, ts(D.as_of)) + 30 * 864e5;
+  const maxY = niceMax(sum(ps, p => p.mw));
+  const X = t => m.l + (t - t0) / (t1 - t0) * (W - m.l - m.r), Y = v => H - m.b - v / maxY * (H - m.t - m.b);
+  let g = '';
+  for (let i = 0; i <= 4; i++) {
+    const v = maxY * i / 4;
+    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--${i ? 'grid' : 'axis'})"/>`
+      + `<text class="muted" x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  for (let y = new Date(t0).getUTCFullYear() + 1; Date.UTC(y, 0, 1) < t1; y++) {
+    const x = X(Date.UTC(y, 0, 1));
+    g += `<line x1="${x}" x2="${x}" y1="${H - m.b}" y2="${H - m.b + 4}" stroke="var(--axis)"/><text class="muted" x="${x}" y="${H - 6}" text-anchor="middle">${y}</text>`;
+  }
+  const xa = X(ts(D.as_of));
+  if (xa > m.l && xa < W - m.r) g += `<line x1="${xa}" x2="${xa}" y1="${m.t}" y2="${H - m.b}" stroke="var(--axis)"/><text class="muted" x="${xa + 4}" y="${H - m.b - 6}">data cut-off</text>`;
+  const path = s => { let d = `M${X(t0)},${Y(0)}`, prev = 0;
+    s.forEach(e => { d += `H${X(e.t)}V${Y(e.mw)}`; prev = e.mw; }); return d + `H${X(t1)}`; };
+  g += `<path d="${path(base)}" fill="none" stroke="var(--neutral)" stroke-width="2" stroke-linejoin="round"/>`
+    + `<path d="${path(cur)}" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>`;
+  cur.forEach(e => {
+    g += `<circle cx="${X(e.t)}" cy="${Y(e.mw)}" r="4" fill="var(--ink)" stroke="var(--surface)" stroke-width="2"/>`
+      + `<circle class="hit" cx="${X(e.t)}" cy="${Y(e.mw)}" r="12" fill="transparent" data-tip="${esc(`${e.p.project_name} (+${e.p.mw} MW)\nPlanned RFS ${fmtDate(e.p.rfs_baseline_date)}\nCurrent RFS ${fmtDate(e.p.rfs_current_date)} (${e.p.rfs_slip_days} d slip)\nCumulative ${e.mw} MW`)}"/>`;
+  });
+  const kx = m.l + 12, ky = m.t + 26;
+  g += `<line x1="${kx}" x2="${kx + 18}" y1="${ky}" y2="${ky}" stroke="var(--ink)" stroke-width="2"/><text class="strong" x="${kx + 24}" y="${ky + 4}">Actual / current forecast</text>`
+    + `<line x1="${kx}" x2="${kx + 18}" y1="${ky + 16}" y2="${ky + 16}" stroke="var(--neutral)" stroke-width="2"/><text x="${kx + 24}" y="${ky + 20}">Baseline plan</text>`;
+  $(id).innerHTML = svg(W, H, g, 'Cumulative megawatts delivered, baseline plan versus current forecast');
+}
+
+// ---------- switchgear scatter ----------
+function renderScatter(ids) {
+  const id = 'c-scatter';
+  const pts = D.po_lines.filter(l => ids.has(l.project_id) && l.category === 'MV Switchgear');
+  if (!pts.length) return empty(id);
+  const W = width(id), H = 300, m = { l: 40, r: 14, t: 12, b: 26 };
+  const all = D.po_lines.filter(l => l.category === 'MV Switchgear');
+  const t0 = Math.min(...all.map(l => ts(l.po_date))) - 60 * 864e5, t1 = Math.max(...all.map(l => ts(l.po_date))) + 60 * 864e5;
+  const maxY = 20, minY = -5;
+  const X = t => m.l + (t - t0) / (t1 - t0) * (W - m.l - m.r), Y = v => H - m.b - (v - minY) / (maxY - minY) * (H - m.t - m.b);
+  let g = '';
+  for (let v = minY; v <= maxY; v += 5)
+    g += `<line x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--${v === 0 ? 'axis' : 'grid'})"/>`
+      + `<text class="muted" x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
+  g += `<text class="muted" x="${W - m.r}" y="${Y(0) + 14}" text-anchor="end">0 = delivered on the promised date</text><text class="muted" x="${m.l + 4}" y="${m.t + 9}">weeks late</text>`;
+  for (let y = new Date(t0).getUTCFullYear() + 1; Date.UTC(y, 0, 1) < t1; y++)
+    g += `<text class="muted" x="${X(Date.UTC(y, 0, 1))}" y="${H - 6}" text-anchor="middle">${y}</text>`;
+  pts.forEach(l => {
+    const c = COLOR[vendorKey(l.vendor_name)], wk = l.slip_days / 7, open = l.status === 'Open';
+    const cx = X(ts(l.po_date)), cy = Y(Math.max(minY, Math.min(maxY, wk)));
+    g += open ? `<circle cx="${cx}" cy="${cy}" r="4" fill="var(--surface)" stroke="${c}" stroke-width="2"/>`
+      : `<circle cx="${cx}" cy="${cy}" r="5" fill="${c}" stroke="var(--surface)" stroke-width="2"/>`;
+    g += `<circle class="hit" cx="${cx}" cy="${cy}" r="9" fill="transparent" data-tip="${esc(`${l.vendor_name}\n${l.project_id} · ${l.description}\nOrdered ${fmtDate(l.po_date)}\n${wk.toFixed(1)} weeks after promise${open ? ' (current promise, not yet delivered)' : ''}\n${l.late_days > 0 ? l.late_days + ' days after the site needed it' : 'Met the required-on-site date'}`)}"/>`;
+  });
+  $(id).innerHTML = svg(W, H, g, 'Switchgear delivery slip in weeks by purchase order date and vendor');
+}
+
+// ---------- cost variance (diverging around zero) ----------
+function renderCost(ps) {
+  const id = 'c-cost';
+  if (!ps.length) return empty(id);
+  const W = width(id), labelW = Math.min(170, W * 0.42), endW = 96, rowH = 26, bh = 14, top = 6;
+  const plotW = W - labelW - endW, H = top + ps.length * rowH + 20;
+  const max = Math.max(2, Math.ceil(Math.max(...ps.map(p => Math.abs(p.variance_pct)))));
+  const X = v => labelW + (v + max) / (2 * max) * plotW;
+  let g = '';
+  [-max, -max / 2, 0, max / 2, max].forEach(v => {
+    g += `<line x1="${X(v)}" x2="${X(v)}" y1="${top}" y2="${H - 20}" stroke="var(--${v ? 'grid' : 'axis'})"/>`
+      + `<text class="muted" x="${X(v)}" y="${H - 5}" text-anchor="middle">${v > 0 ? '+' : ''}${v}%</text>`;
+  });
+  ps.forEach((p, i) => {
+    const y = top + i * rowH + (rowH - bh) / 2, v = p.variance_pct, w = Math.abs(X(v) - X(0));
+    const tip = `${p.project_name}\nBudget ${usd(p.budget)}\nForecast at completion ${usd(p.eac)}\nVariance ${v > 0 ? '+' : ''}${usd(p.variance_usd)} (${v > 0 ? '+' : ''}${v.toFixed(1)}%)`;
+    g += `<text class="strong" x="0" y="${y + 11}">${esc(short(p))}</text>`
+      + `<path d="${v >= 0 ? barPath(X(0), y, w, bh, 4) : barPath(X(v), y, w, bh, 4, true)}" fill="${COLOR[vendorKey(p.switchgear_vendor)]}" data-tip="${esc(tip)}"/>`
+      + `<text x="${labelW + plotW + 6}" y="${y + 11}">${v > 0 ? '+' : ''}${v.toFixed(1)}% · ${v > 0 ? '+' : ''}${usd(p.variance_usd)}</text>`;
+  });
+  $(id).innerHTML = svg(W, H, g, 'Forecast at completion versus budget, percent variance by project');
+}
+
+// ---------- milestone tracker ----------
+function renderMilestones(ps, ids) {
+  if (!ps.length) return empty('t-milestones');
+  const names = { NTP: 'Notice to Proceed', PERMIT: 'Permit', SHELL: 'Shell Dry-In', UTILITY: 'Utility Power',
+    GEARSET: 'Electrical Gear Set', MEP: 'MEP Complete', L5: 'L5 Commissioning', RFS: 'Ready for Service' };
+  const codes = Object.keys(names), cell = {};
+  D.milestones.filter(x => ids.has(x.project_id)).forEach(x => { cell[x.project_id + x.code] = x; });
+  let h = `<table class="ms"><thead><tr><th>Project</th><th>Stage</th>${codes.map(c => `<th style="text-align:center">${names[c]}</th>`).join('')}</tr></thead><tbody>`;
+  ps.forEach(p => {
+    h += `<tr><td><b>${esc(short(p))}</b></td><td>${p.status}</td>`;
+    codes.forEach(c => {
+      const x = cell[p.project_id + c], icon = x.status === 'Complete' ? '✓' : x.status === 'In Progress' ? '◐' : '○';
+      const untouched = x.status === 'Not Started' && x.slip_days === 0;
+      const cls = untouched ? 'todo' : x.slip_days <= 7 ? 'good' : x.slip_days <= 45 ? 'warning' : 'critical';
+      const txt = untouched ? '' : x.slip_days > 0 ? ` +${x.slip_days} d` : x.slip_days < 0 ? ` ${x.slip_days} d` : ' on plan';
+      h += `<td class="cell ${cls}" data-tip="${esc(`${p.project_name} · ${names[c]}\n${x.status}\nBaseline ${fmtDate(x.baseline_date)}\n${x.status === 'Complete' ? 'Actual' : 'Forecast'} ${fmtDate(x.current_date)}`)}">${icon}${txt}</td>`;
+    });
+    h += '</tr>';
+  });
+  $('t-milestones').innerHTML = h + '</tbody></table>';
+}
+
+// ---------- risks ----------
+function renderRisks(ids) {
+  const rows = D.risks.filter(r => ids.has(r.project_id)).slice(0, 8);
+  if (!rows.length) { $('t-risks').innerHTML = '<p class="note">No open risks on the selected projects.</p>'; return; }
+  $('t-risks').innerHTML = `<table><thead><tr><th>Project</th><th>Risk</th><th>Category</th><th>Status</th><th class="num">Probability</th><th class="num">Cost impact</th><th class="num">Schedule impact</th><th class="num">Weighted exposure</th><th>Owner</th></tr></thead><tbody>`
+    + rows.map(r => `<tr><td>${esc(short(byId[r.project_id]))}</td><td>${esc(r.title)}</td><td>${r.category}</td><td>${r.status}</td><td class="num">${Math.round(r.probability * 100)}%</td><td class="num">${usd(r.cost)}</td><td class="num">${r.days} d</td><td class="num"><b>${usd(r.probability * r.cost)}</b></td><td>${esc(r.owner_role)}</td></tr>`).join('')
+    + '</tbody></table>';
+}
+
+// ---------- decision panel ----------
+function renderDecision() {
+  const rows = D.decision.filter(d => d.basis === state.basis);
+  const stay = rows.find(d => d.vendor_option.startsWith('Kestrel')), sw = rows.find(d => d.vendor_option.startsWith('Halvorsen'));
+  const net = stay.expected_cost - sw.expected_cost, perDay = sw.deferred_revenue / sw.slip_days;
+  $('d-headline').textContent = `Switching to the alternate vendor avoids about ${usd(net)} of expected delay cost.`;
+  const part = (d, k, label, color) => ({ v: d[k] / 1e6, color, tip: `${d.vendor_option}\n${label}: ${usd(d[k])}\nExpected RFS slip: ${d.slip_days} days per project` });
+  hbars('c-decision', [[stay, 'Stay with Kestrel'], [sw, 'Switch to Halvorsen']].map(([d, label]) => ({
+    label,
+    segs: [part(d, 'switching_cost', 'Switching cost', 'var(--g1)'), part(d, 'deferred_revenue', 'Deferred revenue', 'var(--g2)'),
+      part(d, 'delay_cos', 'Delay change orders', 'var(--g3)')],
+    end: usd(d.expected_cost),
+  })), { labelW: 140, endW: 64, tick: v => '$' + Math.round(v) + 'M', aria: 'Expected cost of each switchgear vendor option' });
+  const a = Object.fromEntries(D.assumptions.map(x => [x.key, x.value]));
+  $('d-facts').innerHTML = [
+    `<b>${stay.mw} MW</b> across three projects, <b>${stay.lineups}</b> switchgear lineups not yet awarded`,
+    `Expected RFS slip per project: <b>${stay.slip_days} days</b> with Kestrel vs <b>${sw.slip_days} days</b> with Halvorsen`,
+    `Halvorsen price premium observed in same-year orders: <b>${sw.premium_pct}%</b>, plus onboarding, totals <b>${usd(sw.switching_cost)}</b>`,
+    `Break-even: the switch pays for itself if it avoids <b>${Math.ceil(sw.switching_cost / perDay)} days</b> of slip on each project`,
+    `First order must be released by <b>${fmtDate(stay.order_by)}</b>`,
+    `Delay valued at $${a.lease_rate_usd_per_kw_month}/kW-month with ${Math.round(a.billing_ramp_factor * 100)}% of capacity billing during the delay window`,
+  ].map(x => `<li>${x}</li>`).join('');
+  document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.basis === state.basis));
+}
+
+// ---------- wiring ----------
+function render() {
+  const ps = selected(), ids = new Set(ps.map(p => p.project_id));
+  renderKpis(ps, ids); renderSlip(ps); renderCapacity(ps); renderScatter(ids); renderVendors(ids);
+  renderChangeOrders(ids); renderCost(ps); renderMilestones(ps, ids); renderRisks(ids); renderDecision();
+}
+function fill(id, values, key) {
+  $(id).innerHTML = ['All', ...values].map(v => `<option>${v}</option>`).join('');
+  $(id).addEventListener('change', e => { state[key] = e.target.value; render(); });
+}
+$('asof').textContent = `Data as of ${fmtDate(D.as_of)}`;
+fill('f-region', [...new Set(D.projects.map(p => p.region))].sort(), 'region');
+fill('f-stage', STAGES.filter(s => D.projects.some(p => p.status === s)), 'stage');
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { state.basis = b.dataset.basis; renderDecision(); }));
+
+const tip = $('tip');
+document.addEventListener('mousemove', e => {
+  const t = e.target.closest && e.target.closest('[data-tip]');
+  if (!t) { tip.style.display = 'none'; return; }
+  tip.textContent = t.getAttribute('data-tip');
+  tip.style.display = 'block';
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(window.innerWidth - r.width - 8, e.clientX + 14) + 'px';
+  tip.style.top = (e.clientY + 16 + r.height > window.innerHeight ? e.clientY - r.height - 10 : e.clientY + 16) + 'px';
+});
+document.addEventListener('touchstart', e => { if (!e.target.closest('[data-tip]')) tip.style.display = 'none'; }, { passive: true });
+let timer; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+render();
+</script>
+</body>
+</html>

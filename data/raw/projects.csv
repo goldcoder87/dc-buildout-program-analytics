@@ -1,0 +1,13 @@
+Project ID,Site,Phase,Project Name,Type,IT Capacity,General Contractor,Status
+P01,LDN,1,Loudoun Ridge Phase 1,GREENFIELD,24,Harlow Brandt Construction,Complete
+P02,LDN,2,Loudoun Ridge Phase 2,Expansion,36 MW,Harlow Brandt Construction,Complete
+P03,PHX,1,Sonoran Mesa Phase 1,Greenfield,30,Mesa Verde Builders,Complete
+P04,DFW,1,Red Oak Phase 1,Greenfield,24,Trinity Structural Group,Complete
+P05,CMH,1,Licking Fields Phase 1,Greenfield,36 MW,Harlow Brandt Construction,Complete
+P06,ATL,1,Chattahoochee Phase 1,Greenfield,24,Trinity Structural Group,Commissioning
+P07,PHX,2,Sonoran Mesa Phase 2,Expansion,30 MW,Mesa Verde Builders,Commissioning
+P08,LDN,3,Loudoun Ridge Phase 3,Expansion,36 MW,Harlow Brandt Construction,Construction
+P09,DFW,2,Red Oak Phase 2,Expansion,24 MW,Trinity Structural Group,Construction
+P10,CMH,2,Licking Fields Phase 2,Expansion,48,Harlow Brandt Construction,Pre-Construction
+P11,HIO,1,Tualatin Valley Phase 1,Greenfield,30,Cascade Ridge Constructors,Pre-Construction
+P12,ATL,2,Chattahoochee Phase 2,Expansion,36,Trinity Structural Group,Pre-Construction
